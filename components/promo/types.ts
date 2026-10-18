@@ -1,5 +1,4 @@
 import type { ComponentType } from 'react'
-import type { PromoCopy } from './copy'
 
 export type SceneProps = {
   t: number
@@ -8,7 +7,7 @@ export type SceneProps = {
 
 export type SceneDefinition = {
   id: string
-  labelKey: keyof PromoCopy
+  label: string
   start: number
   duration: number
   accent: string

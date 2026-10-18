@@ -22,7 +22,7 @@ function Saturn({ timeRef }: { timeRef: React.RefObject<number> }) {
   const halfHorizontalFov = Math.atan(
     (Math.tan(halfVerticalFov) * Math.max(size.width, 1)) / Math.max(size.height, 1),
   )
-  const cameraDistance = (0.82 * (RING_RADIUS + 1)) / Math.sin(Math.min(halfVerticalFov, halfHorizontalFov))
+  const cameraDistance = (RING_RADIUS + 1) / Math.sin(Math.min(halfVerticalFov, halfHorizontalFov))
 
   useFrame(() => {
     const t = timeRef.current ?? 0

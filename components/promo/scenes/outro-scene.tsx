@@ -1,10 +1,8 @@
 import { easeOutBack, easeOutExpo, progress } from '@/lib/motion'
-import { useCopy } from '../copy'
 import { Reveal, SceneShell } from '../primitives'
 import type { SceneProps } from '../types'
 
 export function OutroScene({ t, duration }: SceneProps) {
-  const copy = useCopy()
   const bg = easeOutExpo(progress(t, 0, 1.6))
   const logo = easeOutBack(progress(t, 0.5, 1))
   const float = Math.sin(t * 1.6) * 10
@@ -23,23 +21,30 @@ export function OutroScene({ t, duration }: SceneProps) {
       <div className="relative flex h-full flex-col items-center justify-center text-center">
         <img
           src="/video/server-logo.png"
-          alt="ZO7AL"
-          width={230}
-          height={230}
+          alt="شعار ZO7AL"
+          width={260}
+          height={260}
           style={{
             transform: `translateY(${float}px) scale(${logo}) rotate(${(1 - logo) * 25}deg)`,
             filter: 'drop-shadow(0 0 60px rgba(255,122,0,0.55))',
           }}
         />
-        <Reveal t={t} at={1.1} className="mt-8 text-[120px] font-bold leading-[1.05] tracking-tight">
-          <span dir="ltr" className="flex flex-col items-center">
-            <span className="text-white">ZO7AL</span>
-            <span className="text-[#ff7a00]">PROJECTS</span>
+        <Reveal t={t} at={1.1} className="mt-8 text-[120px] font-bold leading-none text-white">
+          <span dir="ltr">
+            ZO<span className="text-[#ff7a00]">7</span>AL
           </span>
+        </Reveal>
+        <Reveal t={t} at={1.3} className="mt-4 text-[40px] font-semibold tracking-[0.6em] text-[#ff7a00]">
+          <span dir="ltr" className="ps-[0.6em]">
+            PROJECTS
+          </span>
+        </Reveal>
+        <Reveal t={t} at={1.5} className="mt-8 text-[48px] font-semibold text-[#c9ced6]">
+          ابنِ. العب. أبدع.
         </Reveal>
         <Reveal
           t={t}
-          at={1.9}
+          at={2}
           y={20}
           className="mt-12 flex items-center gap-4 rounded-full border border-white/15 bg-white/5 px-10 py-5 text-[36px] font-semibold text-white"
         >
