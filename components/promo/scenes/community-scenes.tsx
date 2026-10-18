@@ -15,42 +15,43 @@ import type { SceneProps } from '../types'
 
 const PURPLE = '#8b5cf6'
 const CYAN = '#19d9ff'
-const GOLD = '#ffc94a'
+const ORANGE = '#ff7a00'
 
 const ISLANDS = [
-  { code: '0633-4212-9611', tag: 'قنص · منظور أول' },
-  { code: '3325-4001-0926', tag: 'زون وورز · 16 لاعب' },
-  { code: '4904-5829-1966', tag: 'الكل ضد الكل' },
-  { code: '6387-4453-1682', tag: 'معركة 4 فرق' },
-  { code: '2994-5126-9804', tag: '+100 أغنية' },
-  { code: '4162-0323-5737', tag: 'Doomspire Brickbattle' },
+  { code: '4162-0323-5737', title: 'Doomspire Brickbattle' },
+  { code: '0633-4212-9611', title: 'سنايبرات زحل' },
+  { code: '3325-4001-0926', title: 'SOLO SCRIMS GALAXY' },
+  { code: '4904-5829-1966', title: 'ALL WEAPONS' },
+  { code: '6387-4453-1682', title: 'حرب الكلانات' },
+  { code: '2994-5126-9804', title: 'Best 1v1 Map' },
+  { code: '3310-5985-8629', title: 'أحمر مقابل أزرق' },
+  { code: '2404-2844-7787', title: 'عاركني بالبناء' },
 ]
 
 export function FortniteScene({ t, duration }: SceneProps) {
   return (
-    <SceneShell t={t} duration={duration} accent={PURPLE} glowPosition="75% 45%">
-      <div className="flex h-full items-center justify-between gap-20 px-[150px]">
-        <div className="max-w-[640px]">
-          <Reveal t={t} at={0.2}>
-            <Eyebrow accent={PURPLE}>فورتنايت كرييتف</Eyebrow>
-          </Reveal>
-          <TitleWords
-            t={t}
-            at={0.35}
-            words={['كل', 'ماب', 'في', 'مكان', 'واحد']}
-            accentIndex={1}
-            accent={PURPLE}
-            stagger={0.08}
-            className="mt-8 text-[110px] font-bold leading-[1.1] text-white"
-          />
-          <Reveal t={t} at={1} className="mt-8 text-[36px] leading-relaxed text-[#c9ced6]">
-            مابات وتجارب من صنع زحل — متزامنة مباشرة مع Fortnite.com
-          </Reveal>
+    <SceneShell t={t} duration={duration} accent={PURPLE} glowPosition="50% 30%">
+      <div className="flex h-full flex-col justify-center px-[150px]">
+        <div className="flex items-end justify-between gap-10">
+          <div>
+            <Reveal t={t} at={0.2}>
+              <Eyebrow accent={PURPLE}>فورتنايت كرييتف</Eyebrow>
+            </Reveal>
+            <TitleWords
+              t={t}
+              at={0.35}
+              words={['كل', 'ماب', 'في', 'مكان', 'واحد']}
+              accentIndex={1}
+              accent={PURPLE}
+              stagger={0.08}
+              className="mt-6 text-[96px] font-bold leading-[1.1] text-white"
+            />
+          </div>
           <Reveal
             t={t}
-            at={3.1}
+            at={1}
             y={20}
-            className="mt-12 inline-flex items-center gap-4 rounded-full border border-[#8b5cf6]/40 bg-[#8b5cf6]/15 px-8 py-4 text-[28px] font-semibold text-white"
+            className="mb-4 inline-flex items-center gap-4 rounded-full border border-[#8b5cf6]/40 bg-[#8b5cf6]/15 px-8 py-4 text-[28px] font-semibold text-white"
           >
             كود صانع المحتوى:
             <span dir="ltr" className="text-[#19d9ff]">
@@ -59,26 +60,31 @@ export function FortniteScene({ t, duration }: SceneProps) {
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-2 gap-6" style={{ perspective: '1600px' }}>
+        <div className="mt-12 grid grid-cols-4 gap-6" style={{ perspective: '1800px' }}>
           {ISLANDS.map((island, i) => {
-            const p = easeOutExpo(progress(t, 0.9 + i * 0.14, 0.9))
+            const p = easeOutExpo(progress(t, 0.7 + i * 0.12, 0.9))
             return (
               <div
                 key={island.code}
-                className="w-[420px] rounded-[28px] border border-white/10 bg-[#11141b]/90 p-8"
+                className="overflow-hidden rounded-[24px] border border-white/10 bg-[#11141b]/90"
                 style={{
                   opacity: p,
-                  transform: `rotateX(${(1 - p) * -70}deg) translateY(${(1 - p) * 60}px)`,
+                  transform: `rotateX(${(1 - p) * -60}deg) translateY(${(1 - p) * 60}px) scale(${0.92 + 0.08 * p})`,
                   transformOrigin: 'top center',
-                  boxShadow: '0 24px 60px rgba(0,0,0,0.45)',
+                  boxShadow: '0 24px 60px rgba(0,0,0,0.45), 0 0 40px rgba(139,92,246,0.12)',
                 }}
               >
-                <div className="text-[20px] font-semibold text-[#8f96a3]">كود الماب</div>
-                <div dir="ltr" className="mt-2 text-start font-mono text-[40px] font-bold text-white">
-                  {island.code}
-                </div>
-                <div className="mt-4 inline-block rounded-full bg-[#8b5cf6]/20 px-5 py-2 text-[22px] text-[#c4b5fd]">
-                  {island.tag}
+                <img
+                  src={`/video/maps/${island.code}.jpg`}
+                  alt={island.title}
+                  className="aspect-video w-full object-cover"
+                  style={{ transform: `scale(${1.12 - 0.12 * p})` }}
+                />
+                <div className="flex items-center justify-between gap-3 px-5 py-4">
+                  <span className="truncate text-[22px] font-semibold text-white">{island.title}</span>
+                  <span dir="ltr" className="shrink-0 font-mono text-[18px] text-[#c4b5fd]">
+                    {island.code}
+                  </span>
                 </div>
               </div>
             )
@@ -110,7 +116,9 @@ export function SocialsScene({ t, duration }: SceneProps) {
                 left: '50%',
                 top: '50%',
                 transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${Math.max(0, p)})`,
-                boxShadow: `0 0 50px color-mix(in srgb, #${icon.hex === '000000' ? 'ffffff' : icon.hex} 20%, transparent)`,
+                boxShadow: `0 0 50px color-mix(in srgb, ${
+                  icon.slug === 'instagram' ? '#E1306C' : `#${icon.hex === '000000' ? 'ffffff' : icon.hex}`
+                } 25%, transparent)`,
               }}
             >
               <BrandIcon icon={icon} size={62} />
@@ -143,51 +151,50 @@ export function SocialsScene({ t, duration }: SceneProps) {
 }
 
 const RANKS = [
-  { name: 'VIP', color: '#2be37b' },
-  { name: 'MVP', color: '#19d9ff' },
-  { name: 'MVP+', color: '#8b5cf6' },
-  { name: 'MVP++', color: '#ffc94a' },
+  { name: 'VIP', image: '/video/rank-vip.png' },
+  { name: 'VIP+', image: '/video/rank-vipp.png' },
+  { name: 'VIP++', image: '/video/rank-vippp.png' },
+  { name: 'MVP', image: '/video/rank-mvp.png' },
+  { name: 'MVP+', image: '/video/rank-mvpp.png' },
+  { name: 'MVP++', image: '/video/rank-mvppp.png' },
 ]
 
 export function StoreScene({ t, duration }: SceneProps) {
   return (
-    <SceneShell t={t} duration={duration} accent={GOLD} glowPosition="50% 85%">
+    <SceneShell t={t} duration={duration} accent={ORANGE} glowPosition="50% 70%">
       <div className="flex h-full flex-col items-center justify-center px-[150px] text-center">
         <Reveal t={t} at={0.2} className="flex justify-center">
-          <Eyebrow accent={GOLD}>رتب السيرفر</Eyebrow>
+          <Eyebrow accent={ORANGE}>رتب السيرفر</Eyebrow>
         </Reveal>
         <TitleWords
           t={t}
           at={0.35}
           words={['متجر', 'شبكة', 'زحل']}
           accentIndex={2}
-          accent={GOLD}
-          className="mt-6 text-[130px] font-bold leading-[1.1] text-white"
+          accent={ORANGE}
+          className="mt-5 text-[110px] font-bold leading-[1.1] text-white"
         />
-        <div dir="ltr" className="mt-14 flex items-end gap-8">
+        <div dir="ltr" className="mt-10 grid grid-cols-3 gap-6">
           {RANKS.map((rank, i) => {
-            const p = easeOutBack(progress(t, 0.9 + i * 0.15, 0.9))
-            const height = 220 + i * 50
+            const p = easeOutBack(progress(t, 0.8 + i * 0.12, 0.85))
+            const float = Math.sin(t * 2 + i) * 6
             return (
               <div
                 key={rank.name}
-                className="flex w-[300px] flex-col items-center justify-end rounded-[30px] border border-white/10 bg-[#11141b]/90 pb-10"
+                className="flex w-[440px] items-center justify-center rounded-[28px] border border-[#ff7a00]/20 px-6 py-4"
                 style={{
-                  height,
                   opacity: Math.min(1, Math.max(0, p)),
-                  transform: `translateY(${(1 - p) * 160}px)`,
-                  background: `linear-gradient(to top, color-mix(in srgb, ${rank.color} 22%, #11141b), #11141b 75%)`,
-                  boxShadow: `0 0 70px color-mix(in srgb, ${rank.color} 20%, transparent)`,
+                  transform: `translateY(${(1 - p) * 120 + float}px) scale(${Math.max(0, p)})`,
+                  background: 'radial-gradient(ellipse at 50% 60%, rgba(255,122,0,0.22), #11141b 70%)',
+                  boxShadow: '0 0 60px rgba(255,122,0,0.14)',
                 }}
               >
-                <div className="text-[60px] font-bold" style={{ color: rank.color }}>
-                  {rank.name}
-                </div>
+                <img src={rank.image} alt={rank.name} className="aspect-[666/375] w-full object-contain" />
               </div>
             )
           })}
         </div>
-        <Reveal t={t} at={2.2} className="mt-12 text-[32px] text-[#c9ced6]">
+        <Reveal t={t} at={2.2} className="mt-10 text-[30px] text-[#c9ced6]">
           جميع المشتريات تتم بأمان عبر Tebex — المتجر الرسمي لزحل.
         </Reveal>
       </div>

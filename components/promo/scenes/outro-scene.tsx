@@ -34,6 +34,11 @@ export function OutroScene({ t, duration }: SceneProps) {
             ZO<span className="text-[#ff7a00]">7</span>AL
           </span>
         </Reveal>
+        <Reveal t={t} at={1.3} className="mt-4 text-[40px] font-semibold tracking-[0.6em] text-[#ff7a00]">
+          <span dir="ltr" className="ps-[0.6em]">
+            PROJECTS
+          </span>
+        </Reveal>
         <Reveal t={t} at={1.5} className="mt-8 text-[48px] font-semibold text-[#c9ced6]">
           ابنِ. العب. أبدع.
         </Reveal>
@@ -44,7 +49,7 @@ export function OutroScene({ t, duration }: SceneProps) {
           className="mt-12 flex items-center gap-4 rounded-full border border-white/15 bg-white/5 px-10 py-5 text-[36px] font-semibold text-white"
         >
           <span className="h-3.5 w-3.5 rounded-full bg-[#ff7a00]" style={{ boxShadow: '0 0 16px #ff7a00' }} />
-          <span dir="ltr">zo7al.vercel.app</span>
+          <span dir="ltr">zo7al.is-a.dev</span>
         </Reveal>
       </div>
     </SceneShell>

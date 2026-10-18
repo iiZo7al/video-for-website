@@ -11,7 +11,7 @@ export const SCENES: SceneDefinition[] = [
   { id: 'modpacks', label: 'المودباكات', start: 13, duration: 4.5, accent: '#2be37b', Component: ModpacksScene },
   { id: 'fortnite', label: 'فورتنايت', start: 17, duration: 5, accent: '#8b5cf6', Component: FortniteScene },
   { id: 'socials', label: 'التواصل', start: 21.5, duration: 4.5, accent: '#19d9ff', Component: SocialsScene },
-  { id: 'store', label: 'المتجر', start: 25.5, duration: 4.5, accent: '#ffc94a', Component: StoreScene },
+  { id: 'store', label: 'المتجر', start: 25.5, duration: 4.5, accent: '#ff7a00', Component: StoreScene },
   { id: 'outro', label: 'الختام', start: 29.5, duration: 5.5, accent: '#ff7a00', Component: OutroScene },
 ]
 
